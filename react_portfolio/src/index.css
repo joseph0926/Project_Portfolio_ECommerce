@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  /* color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+  color: #fff;
+  background-color: var(--color-dark-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-gray-100: #f4f3f1;
+  --color-gray-200: #dddbd8;
+  --color-gray-300: #ccc9c6;
+  --color-gray-400: #aeaba7;
+  --color-gray-500: #8a8784;
+  --color-gray-600: #656360;
+  --color-gray-700: #4b4a47;
+  --color-gray-800: #31302e;
+  --color-gray-900: #1f1d1b;
+
+  --color-light-bg: #fceccd;
+  --color-light-bg-op: #fae1af;
+  --color-light-bg-op2: #fbd997;
+  --color-light-pri: #f6ad1b;
+  --color-light-pri-op: #fbc14d;
+  --color-light-pri-op2: #f9c762;
+
+  --color-dark-bg: #1f1f38;
+  --color-dark-bg-op: #2c2c6c;
+  --color-dark-pri: #4db5ff;
+  --color-dark-pri-op: rgba(77, 181, 255, 0.4);
+}
+
+body {
+  margin: 0;
+  /* background-image: url(../src/assets/bg-texture.png); */
+  background: linear-gradient(130deg, black, #121286);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.loading-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.loading-ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: ring 2s linear infinite;
+  overflow: hidden;
+}
+.loading-ring::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+.loading-text {
+  color: #737373;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 200px;
+  animation: loadingText 3s ease-in-out infinite;
+}
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 1px 5px 2px #e68200;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 1px 5px 2px #e64500;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 1px 5px 2px #e60000;
+  }
+}
+@keyframes loadingText {
+  50% {
+    color: black;
+  }
+}
+
+.card-pause {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}

@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  margin-left: 3rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+}
+.header h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #fff;
+  text-align: left;
+  margin-right: 2rem;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.sub {
+  width: 1000px;
+}
+
+@media (min-width: 640px) {
+  .header {
+    flex-direction: row;
+  }
+  .products-list {
+    justify-content: start;
+  }
+}

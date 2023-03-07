@@ -1,0 +1,44 @@
+.container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  height: 100vh;
+  padding: 2.5rem 2rem;
+  background: #191624;
+}
+.container h2 {
+  text-align: center;
+}
+.container li {
+  margin-top: 2.5rem;
+}
+.container li a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  margin: 2rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-gray-500);
+}
+.container li a:hover {
+  color: rgb(58, 82, 146);
+}
+
+svg {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.active {
+  color: rgb(58, 82, 146);
+}
+
+/* @media (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+} */
