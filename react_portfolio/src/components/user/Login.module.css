@@ -24,7 +24,7 @@
   position: relative;
   width: 100%;
   padding: 20px 10px 10px;
-  background: transparent;
+  background-color: transparent;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -41,6 +41,7 @@
   letter-spacing: 0.1rem;
   transition: all 0.5s;
 }
+/* .input-box input:valid ~ span, */
 .input-box input:focus ~ span {
   color: #45f3ff;
   transform: translateX(-10px) translateY(-40px);
@@ -57,8 +58,10 @@
   transition: all 0.5s;
   pointer-events: none;
 }
+/* .input-box input:f ~ i, */
 .input-box input:focus ~ i {
   height: 44px;
+  z-index: -1;
 }
 
 .sub {

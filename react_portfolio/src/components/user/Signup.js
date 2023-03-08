@@ -1,14 +1,25 @@
 import React from "react";
+import { Form, useActionData } from "react-router-dom";
 
 import styles from "./Signup.module.css";
 
 const Signup = (props) => {
+  const data = useActionData();
+
   return (
     <div className={styles.form}>
       <h2>회원가입</h2>
-      <form>
+      <Form method="post">
+        {data && data.errors && (
+          <ul>
+            {Object.values(data.errors).map((err) => {
+              return <li key={err}>{err}</li>;
+            })}
+          </ul>
+        )}
+        {data && data.message && <p>{data.message}</p>}
         <div className={styles["input-box"]}>
-          <input type="email" name="email" id="meail"></input>
+          <input type="email" name="email" id="email"></input>
           <span>Email</span>
           <i></i>
         </div>
@@ -17,13 +28,8 @@ const Signup = (props) => {
           <span>Password</span>
           <i></i>
         </div>
-        <div className={styles["input-box"]}>
-          <input type="text" name="name" id="name"></input>
-          <span>Name</span>
-          <i></i>
-        </div>
-        <button type="submit">회원가입</button>
-      </form>
+        <button>회원가입</button>
+      </Form>
     </div>
   );
 };

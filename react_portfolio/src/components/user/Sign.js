@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Login from "./Login";
 import Signup from "./Signup";
@@ -17,15 +18,15 @@ const Sign = () => {
       <div className="sign-content">
         <div className="sign-header">
           <h2>이미 회원이시라면, 로그인해주세요!</h2>
-          <button className="sign-btn" onClick={inactiveHandler}>
-            Login
-          </button>
+          <Link to="?mode=signInWithPassword" className="sign-btn" onClick={inactiveHandler}>
+            로그인
+          </Link>
         </div>
         <div className="sign-header">
           <h2>회원이 아니신가요? 회원가입해주세요!</h2>
-          <button className="sign-btn" onClick={activeHandler}>
-            Signup
-          </button>
+          <Link to="?mode=signUp" className="sign-btn" onClick={activeHandler}>
+            회원가입
+          </Link>
         </div>
       </div>
       <div className={`${formBoxActvie ? "sign-formBox active" : "sign-formBox"}`}>

@@ -8,14 +8,19 @@ import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CartPage from "./pages/CartPage";
 import MyPage from "./pages/MyPage";
-import AuthPage from "./pages/AuthPage";
+import AuthPage, { action as authAction } from "./pages/AuthPage";
 import ErrorPage from "./pages/ErrorPage";
+import { action as logoutAction } from "./pages/Logout";
+import { tokenLoader, checkAuthLoader } from "./helper/auth-helper";
+import ContactPage from "./pages/ContactPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
     errorElement: <ErrorPage></ErrorPage>,
+    id: "root",
+    loader: tokenLoader,
     children: [
       { index: true, element: <HomePage></HomePage> },
       {
@@ -26,9 +31,11 @@ const router = createBrowserRouter([
           { path: ":productId", element: <ProductDetailPage></ProductDetailPage> },
         ],
       },
-      { path: "cart", element: <CartPage></CartPage> },
-      { path: "auth", element: <AuthPage></AuthPage> },
-      { path: "mypage/:userId", element: <MyPage></MyPage> },
+      { path: "cart", element: <CartPage></CartPage>, loader: checkAuthLoader },
+      { path: "contact", element: <ContactPage></ContactPage> },
+      { path: "auth", element: <AuthPage></AuthPage>, action: authAction },
+      { path: "mypage/:userId", element: <MyPage></MyPage>, loader: checkAuthLoader },
+      { path: "logout", action: logoutAction },
     ],
   },
 ]);
