@@ -14,7 +14,9 @@ const MainNavbar = () => {
   return (
     <div className={styles.container}>
       <h2>
-        <Link to="/">DUMMY Logo</Link>
+        <Link to="/">
+          joseph0926's <span style={{ display: "block", marginTop: "1rem", fontSize: "3rem" }}>SHOP</span>
+        </Link>
       </h2>
       <ul>
         <li>

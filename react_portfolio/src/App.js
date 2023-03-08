@@ -2,10 +2,10 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root from "./pages/Root";
-import HomePage from "./pages/HomePage";
+import HomePage, { loader as productsLoader } from "./pages/HomePage";
 import ProductRoot from "./pages/ProductRoot";
 import ProductsPage from "./pages/ProductsPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductDetailPage, { loader as productLoader } from "./pages/ProductDetailPage";
 import CartPage from "./pages/CartPage";
 import MyPage from "./pages/MyPage";
 import AuthPage, { action as authAction } from "./pages/AuthPage";
@@ -22,13 +22,13 @@ const router = createBrowserRouter([
     id: "root",
     loader: tokenLoader,
     children: [
-      { index: true, element: <HomePage></HomePage> },
+      { index: true, element: <HomePage></HomePage>, loader: productsLoader },
       {
         path: "products",
         element: <ProductRoot></ProductRoot>,
         children: [
           { index: true, element: <ProductsPage></ProductsPage> },
-          { path: ":productId", element: <ProductDetailPage></ProductDetailPage> },
+          { path: ":productId", element: <ProductDetailPage></ProductDetailPage>, loader: productLoader },
         ],
       },
       { path: "cart", element: <CartPage></CartPage>, loader: checkAuthLoader },

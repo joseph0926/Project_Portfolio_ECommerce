@@ -4,24 +4,26 @@ import ProductPause from "../UI/Pause";
 
 import styles from "./RecommendProduct.module.css";
 
-const RecommendProductCard = () => {
+const RecommendProductCard = (props) => {
+  const { id, name, price, image, category, description } = props.product;
+
   return (
-    <div className={styles.card}>
-      <h3>1</h3>
+    <Link to={`products/${id}`} className={styles.card}>
+      <h3>{props.idx + 1}</h3>
       <div className={styles.items}>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/330px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg"></img>
+        <img src={image}></img>
       </div>
       <div className={styles.item}>
-        <Link>
-          <p>title asdasda asdasdasd</p>
-        </Link>
+        <div>
+          <p>{name}</p>
+        </div>
       </div>
       <ProductPause size={20} isShow={false}></ProductPause>
-    </div>
+    </Link>
   );
 };
 
-const RecommendProduct = () => {
+const RecommendProduct = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -32,10 +34,11 @@ const RecommendProduct = () => {
           </Link>
         </div>
         <div className={styles.list}>
-          <RecommendProductCard></RecommendProductCard>
-          <RecommendProductCard></RecommendProductCard>
-          <RecommendProductCard></RecommendProductCard>
-          <RecommendProductCard></RecommendProductCard>
+          {props.products
+            .map((product, idx) => {
+              return <RecommendProductCard key={product.id} product={product} idx={idx}></RecommendProductCard>;
+            })
+            .slice(0, 5)}
         </div>
       </div>
       <div className={styles.text}>

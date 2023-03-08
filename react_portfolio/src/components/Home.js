@@ -5,7 +5,7 @@ import ProductCard from "./Products/ProductCard";
 import RecommendProduct from "./Products/RecommendProduct";
 import Search from "./UI/Search";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <Fragment>
       <div className={styles.container}>
@@ -16,13 +16,13 @@ const Home = () => {
             {/*필터*/}
           </div>
           <div className={styles["products-list"]}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => {
-              return <ProductCard key={n} products={n}></ProductCard>;
+            {props.products.map((product) => {
+              return <ProductCard key={product.id} product={product}></ProductCard>;
             })}
           </div>
         </div>
         <div className={styles.sub}>
-          <RecommendProduct></RecommendProduct>
+          <RecommendProduct products={props.products}></RecommendProduct>
         </div>
       </div>
     </Fragment>

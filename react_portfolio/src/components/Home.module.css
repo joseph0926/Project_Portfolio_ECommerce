@@ -1,6 +1,7 @@
 .container {
   display: flex;
   margin-left: 3rem;
+  width: 100%;
 }
 
 .content {
@@ -28,10 +29,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  width: 100%;
 }
 
 .sub {
-  width: 1000px;
+  min-width: 350px;
 }
 
 @media (min-width: 640px) {
