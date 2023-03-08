@@ -1,0 +1,95 @@
+.form {
+  width: 100%;
+  height: 100%;
+  inset: 2px;
+  border-radius: 8px;
+  background: #28292d;
+  z-index: 10;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+}
+.form h2 {
+  color: #45f3ff;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+.input-box {
+  position: relative;
+  width: 300px;
+  margin-top: 35px;
+}
+.input-box input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #23242a;
+  letter-spacing: 0.1rem;
+}
+.input-box span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1rem;
+  color: #8f8f8f;
+  pointer-events: none;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s;
+}
+.input-box input:focus ~ span {
+  color: #45f3ff;
+  transform: translateX(-10px) translateY(-40px);
+  font-size: 0.9rem;
+}
+.input-box i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #45f3ff;
+  border-radius: 4px;
+  transition: all 0.5s;
+  pointer-events: none;
+}
+.input-box input:focus ~ i {
+  height: 44px;
+}
+
+.sub {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+.sub a {
+  margin: 10px 0;
+  font-size: 0.8rem;
+  color: #8f8f8f;
+}
+.sub a:hover {
+  color: #45f3ff;
+}
+
+form > button {
+  border: none;
+  outline: none;
+  background: #45f3ff;
+  padding: 11px 25px;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-gray-800);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+form > button:hover {
+  opacity: 0.7;
+}

@@ -1,7 +1,12 @@
 import React from "react";
+import Sign from "../components/user/Sign";
 
 const AuthPage = () => {
-  return <div>AuthPage</div>;
+  return (
+    <>
+      <Sign></Sign>
+    </>
+  );
 };
 
 export default AuthPage;

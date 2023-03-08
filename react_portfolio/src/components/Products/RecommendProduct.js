@@ -40,7 +40,7 @@ const RecommendProduct = () => {
       </div>
       <div className={styles.text}>
         <div className={styles.header}>
-          <h2>추천 상품</h2>
+          <h2>최근 본 상품</h2>
           <Link>
             <p>더보기...</p>
           </Link>

@@ -38,7 +38,7 @@ const MainNavbar = () => {
         </li>
         <li>
           <NavLink
-            to="/mypage"
+            to="/mypage/asd"
             className={({ isActive }) => {
               return isActive ? styles.active : undefined;
             }}
@@ -49,7 +49,7 @@ const MainNavbar = () => {
         </li>
         <li>
           <NavLink
-            to="/products/asd"
+            to="/auth"
             className={({ isActive }) => {
               return isActive ? styles.active : undefined;
             }}
