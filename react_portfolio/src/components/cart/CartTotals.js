@@ -6,10 +6,11 @@ import { formatPrice } from "../../helper/price";
 
 import styles from "./CartTotals.module.css";
 
-const CartTotals = () => {
-  const cart = useSelector((state) => state.cart.items);
+const CartTotals = (props) => {
+  const cart = props.cart;
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   console.log(totalQuantity);
+  console.log(cart);
 
   return (
     <div className={styles.container}>

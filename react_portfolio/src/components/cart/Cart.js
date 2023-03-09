@@ -11,6 +11,7 @@ import styles from "./Cart.module.css";
 
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart.items);
+  console.log(cart);
   const dispatchFn = useDispatch();
 
   const clearCartHandler = () => {

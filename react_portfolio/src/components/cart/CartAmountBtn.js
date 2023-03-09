@@ -10,7 +10,7 @@ const CartAmountBtn = (props) => {
   const { id, quantity } = props.cartData;
   const dispatchFn = useDispatch();
   const decrestHandler = () => {
-    dispatchFn(cartActions.subItem(id));
+    dispatchFn(cartActions.removeItemFromCart(id));
   };
   const increseHandler = () => {
     dispatchFn(cartActions.addItem(id));
