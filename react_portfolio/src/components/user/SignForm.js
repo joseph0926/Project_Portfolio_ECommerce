@@ -31,10 +31,10 @@ const SignForm = (props) => {
     return value.trim() !== "" && value.length >= 6;
   });
 
-  let formIsValid = false;
+  let formIsInValid = true;
 
   if (enteredEmailIsValid && enteredPasswordIsValid) {
-    formIsValid = true;
+    formIsInValid = false;
   }
 
   const submitHandler = (event) => {
@@ -83,7 +83,7 @@ const SignForm = (props) => {
           </div>
         )}
         {!isLogin && <div className={styles.dummy}></div>}
-        <button>{isLogin ? "로그인" : "회원가입"}</button>
+        <button disabled={formIsInValid}>{isLogin ? "로그인" : "회원가입"}</button>
       </Form>
     </div>
   );

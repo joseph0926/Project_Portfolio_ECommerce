@@ -6,12 +6,13 @@ import { uiAction } from "../../store/slice/ui-slice";
 
 import styles from "./Modal.module.css";
 
-const Backdrop = (props) => {
+const BackdropOverlay = (props) => {
   const dispatchFn = useDispatch();
   const modalCloseHandler = () => {
-    dispatchFn(uiAction.modalClose);
+    dispatchFn(uiAction.modalClose());
   };
-  return <div className={styles.backdrop} onClick={modalCloseHandler} />;
+  const modal = useSelector((state) => state.ui.isModalOpen);
+  return <div>{!modal && <div className={styles.backdrop} onClick={modalCloseHandler} />}</div>;
 };
 
 const ModalOverlay = (props) => {
@@ -26,13 +27,15 @@ const ModalOverlay = (props) => {
 
 const portalElement = document.getElementById("overlays");
 
-const Modal = (props) => {
+export const Modal = (props) => {
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop />, portalElement)}
+      {ReactDOM.createPortal(<BackdropOverlay />, portalElement)}
       {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)}
     </Fragment>
   );
 };
 
-export default Modal;
+export const Backdrop = (props) => {
+  return <Fragment>{ReactDOM.createPortal(<BackdropOverlay />, portalElement)}</Fragment>;
+};

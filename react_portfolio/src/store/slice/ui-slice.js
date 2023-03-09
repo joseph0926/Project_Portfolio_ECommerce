@@ -14,7 +14,7 @@ const uiSlice = createSlice({
       state.isModalOpen = true;
     },
     modalClose(state) {
-      state.isModalOpen = false;
+      state.isModalOpen = true;
     },
   },
 });

@@ -6,6 +6,7 @@ import Stars from "./Stars";
 import { formatPrice } from "../../helper/price";
 
 import styles from "./Product.module.css";
+import CartItemAmount from "../cart/CartItemAmount";
 
 const Product = (props) => {
   const { name, price, description, stock, stars, reviews, id, company, images } = props.product;
@@ -36,7 +37,17 @@ const Product = (props) => {
               {company}
             </p>
             <hr />
-            {/* {stock > 0 && <AddToCart product={product} />} */}
+            <CartItemAmount></CartItemAmount>
+            {stock > 0 && (
+              <div className={styles.btnCon}>
+                <button type="button" className="btn">
+                  카트에 담기
+                </button>
+                <button type="button" className="btn">
+                  구매하기
+                </button>
+              </div>
+            )}
           </section>
         </div>
       </div>

@@ -29,6 +29,12 @@
   font-weight: 700;
 }
 
+.btnCon {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
 @media (min-width: 992px) {
   .product-center {
     grid-template-columns: 1fr 1fr;
