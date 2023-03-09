@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Login from "./Login";
-import Signup from "./Signup";
+import SignForm from "./SignForm";
 
 const Sign = () => {
   const [formBoxActvie, setFormBoxActvie] = useState(false);
@@ -30,8 +29,7 @@ const Sign = () => {
         </div>
       </div>
       <div className={`${formBoxActvie ? "sign-formBox active" : "sign-formBox"}`}>
-        {!formBoxActvie && <Login></Login>}
-        {formBoxActvie && <Signup></Signup>}
+        <SignForm></SignForm>
       </div>
     </div>
   );

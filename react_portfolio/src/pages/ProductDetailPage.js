@@ -1,15 +1,23 @@
 import React, { Suspense } from "react";
 import { json, defer, useLoaderData, Await } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import Product from "../components/Products/Product";
 import Loading from "../components/UI/Loading";
-
 import { single_product_url } from "../helper/api";
+import { uiAction } from "../store/slice/ui-slice";
 
 const ProductDetailPage = () => {
+  const dispatchFn = useDispatch();
+  const loadingFn = () => {
+    dispatchFn(uiAction.loading());
+    return <Loading></Loading>;
+  };
+
   const { product } = useLoaderData();
 
   return (
-    <Suspense fallback={<Loading></Loading>}>
+    <Suspense fallback={loadingFn()}>
       <Await resolve={product}>
         {(productData) => {
           return <Product product={productData}></Product>;

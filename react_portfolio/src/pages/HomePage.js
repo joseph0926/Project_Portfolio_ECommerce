@@ -26,7 +26,6 @@ export default HomePage;
 
 export const fetchProducts = async () => {
   const response = await fetch(products_url);
-  console.log(response);
 
   if (!response.ok) {
     return json(
@@ -37,7 +36,6 @@ export const fetchProducts = async () => {
     );
   } else {
     const resData = await response.json();
-    console.log(resData);
     return resData;
   }
 };

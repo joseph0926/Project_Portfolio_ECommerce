@@ -1,14 +1,25 @@
-import React from "react";
-import { json, redirect } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Await, json, redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import Sign from "../components/user/Sign";
+import Loading from "../components/UI/Loading";
 import { API_KEY } from "../APIKEY";
+import { uiAction } from "../store/slice/ui-slice";
 
 const AuthPage = () => {
+  const dispatchFn = useDispatch();
+  const loadingFn = () => {
+    dispatchFn(uiAction.loading());
+    return <Loading></Loading>;
+  };
+
   return (
-    <>
-      <Sign></Sign>
-    </>
+    <Suspense fallback={loadingFn}>
+      <Await>
+        <Sign></Sign>
+      </Await>
+    </Suspense>
   );
 };
 
@@ -16,8 +27,6 @@ export default AuthPage;
 
 export const action = async ({ request, params }) => {
   const searchParams = new URL(request.url).searchParams;
-  console.log(request);
-  console.dir(searchParams.get("mode"));
   const mode = searchParams.get("mode") || "signInWithPassword";
 
   if (mode !== "signInWithPassword" && mode !== "signUp") {

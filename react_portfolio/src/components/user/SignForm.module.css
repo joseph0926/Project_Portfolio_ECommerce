@@ -24,7 +24,7 @@
   position: relative;
   width: 100%;
   padding: 20px 10px 10px;
-  background: transparent;
+  background-color: transparent;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -41,11 +41,15 @@
   letter-spacing: 0.1rem;
   transition: all 0.5s;
 }
-/* .input-box input:valid ~ span, */
 .input-box input:focus ~ span {
   color: #45f3ff;
   transform: translateX(-10px) translateY(-40px);
   font-size: 0.9rem;
+}
+.input-box.invalid span,
+.input-box.invalid input:focus ~ span {
+  color: red;
+  transform: translateX(-10px) translateY(-40px);
 }
 .input-box i {
   position: absolute;
@@ -58,8 +62,12 @@
   transition: all 0.5s;
   pointer-events: none;
 }
-/* .input-box input:valid ~ i, */
 .input-box input:focus ~ i {
+  height: 44px;
+  z-index: -1;
+}
+.input-box.invalid i {
+  background: red;
   height: 44px;
   z-index: -1;
 }
@@ -85,7 +93,7 @@ form > button {
   background: #45f3ff;
   padding: 11px 25px;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 10px;
   border-radius: 4px;
   font-weight: 700;
   font-size: 1.2rem;
@@ -95,4 +103,9 @@ form > button {
 }
 form > button:hover {
   opacity: 0.7;
+}
+
+.dummy {
+  display: block;
+  margin-top: 4.7rem;
 }
