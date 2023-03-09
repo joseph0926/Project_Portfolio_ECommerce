@@ -49,7 +49,7 @@ const RecommendProduct = (props) => {
           </Link>
         </div>
         {/*Swiper로 바꾸기*/}
-        <div className={styles.image}>
+        {/* <div className={styles.image}>
           {[1, 2, 3, 4, 5, 6]
             .map((i) => {
               return (
@@ -57,7 +57,7 @@ const RecommendProduct = (props) => {
               );
             })
             .slice(0, 4)}
-        </div>
+        </div> */}
       </div>
     </div>
   );

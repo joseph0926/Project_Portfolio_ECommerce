@@ -1,15 +1,28 @@
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import ProductImages from "./ProductImages";
 import Stars from "./Stars";
 import { formatPrice } from "../../helper/price";
+import { cartActions } from "../../store/slice/cart-slice";
 
 import styles from "./Product.module.css";
 import CartItemAmount from "../cart/CartItemAmount";
 
 const Product = (props) => {
   const { name, price, description, stock, stars, reviews, id, company, images } = props.product;
+
+  const dispatchFn = useDispatch();
+  const addToCartHandler = () => {
+    dispatchFn(
+      cartActions.addItemToCart({
+        id,
+        name,
+        price,
+      })
+    );
+  };
 
   return (
     <div>
@@ -40,7 +53,7 @@ const Product = (props) => {
             <CartItemAmount></CartItemAmount>
             {stock > 0 && (
               <div className={styles.btnCon}>
-                <button type="button" className="btn">
+                <button type="button" className="btn" onClick={addToCartHandler}>
                   카트에 담기
                 </button>
                 <button type="button" className="btn">

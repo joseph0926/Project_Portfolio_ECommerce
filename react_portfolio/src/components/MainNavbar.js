@@ -15,7 +15,7 @@ const MainNavbar = () => {
     <div className={styles.container}>
       <h2>
         <Link to="/">
-          joseph0926's <span style={{ display: "block", marginTop: "1rem", fontSize: "3rem" }}>SHOP</span>
+          joseph0926's <div style={{ color: "yellow", display: "block", marginTop: "1rem", fontSize: "3rem" }}>SHOP</div>
         </Link>
       </h2>
       <ul>
