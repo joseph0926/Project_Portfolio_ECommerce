@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
@@ -8,21 +8,14 @@ import CartTotals from "./CartTotals";
 import { cartActions } from "../../store/slice/cart-slice";
 
 import styles from "./Cart.module.css";
-import { fetchCartData } from "../../store/slice/cart-action";
 
 const Cart = (props) => {
+  const cart = useSelector((state) => state.cart.items);
   const dispatchFn = useDispatch();
 
-  const { cart } = props.cart;
-
-  console.log("asdf");
   const clearCartHandler = () => {
-    console.log("asd");
     dispatchFn(cartActions.clearCart());
   };
-  /* const removeItemHandler = (id) => {
-    dispatchFn(cartActions.removeItemFromCart(id));
-  }; */
 
   return (
     <div className={styles.container}>

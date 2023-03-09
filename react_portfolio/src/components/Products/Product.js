@@ -13,13 +13,15 @@ import CartItemAmount from "../cart/CartItemAmount";
 const Product = (props) => {
   const { name, price, description, stock, stars, reviews, id, company, images } = props.product;
 
-  const dispatchFn = useDispatch();
+  const dispatch = useDispatch();
+
   const addToCartHandler = () => {
-    dispatchFn(
+    dispatch(
       cartActions.addItemToCart({
         id,
-        name,
+        name: name,
         price,
+        image: images[0].url,
       })
     );
   };

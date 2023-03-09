@@ -6,13 +6,17 @@ import { formatPrice } from "../../helper/price";
 
 import styles from "./CartTotals.module.css";
 
-const CartTotals = ({ cart }) => {
+const CartTotals = () => {
+  const cart = useSelector((state) => state.cart.items);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  console.log(totalQuantity);
+
   return (
     <div className={styles.container}>
       <div>
         <article>
           <h5>
-            subtotal :<span>{formatPrice(cart.totalPrice)}</span>
+            subtotal :<span>{formatPrice(cart.price * totalQuantity)}</span>
           </h5>
           <p>
             shipping fee :<span>{formatPrice(200)}</span>

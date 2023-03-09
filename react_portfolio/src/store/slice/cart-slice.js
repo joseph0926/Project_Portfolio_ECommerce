@@ -1,39 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const getLocalStorage = () => {
-  let cart = localStorage.getItem("cart");
-  if (cart) {
-    return JSON.parse(localStorage.getItem("cart"));
-  } else {
-    return [];
-  }
-};
-
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
     totalQuantity: 0,
-    changed: false,
   },
   reducers: {
-    replaceCart(state, action) {
-      state.totalQuantity = action.payload.totalQuantity;
-      state.items = action.payload.items;
-    },
     addItemToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       state.totalQuantity++;
-      state.changed = true;
+      console.log(newItem.name);
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
-          image: newItem.image,
           name: newItem.name,
+          image: newItem.image[0].url,
         });
       } else {
         existingItem.quantity++;
@@ -42,19 +28,29 @@ const cartSlice = createSlice({
     },
     removeItemFromCart(state, action) {
       const id = action.payload;
-      console.log(id);
       const existingItem = state.items.find((item) => item.id === id);
       state.totalQuantity--;
-      state.changed = true;
       if (existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id);
       } else {
         existingItem.quantity--;
-        existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
     },
     clearCart(state) {
+      const data = JSON.parse(localStorage.getItem("persist:root"));
+      data.cart = { items: [], totalQuantity: 0 };
       state.items = [];
+      state.totalQuantity = 0;
+    },
+    addItem(state, action) {
+      const id = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      existingItem.quantity++;
+    },
+    subItem(state, action) {
+      const id = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      existingItem.quantity--;
     },
   },
 });

@@ -6,7 +6,7 @@ import HomePage, { loader as productsLoader } from "./pages/HomePage";
 import ProductRoot from "./pages/ProductRoot";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage, { loader as productLoader } from "./pages/ProductDetailPage";
-import CartPage, { loader as cartLoader } from "./pages/CartPage";
+import CartPage from "./pages/CartPage";
 import MyPage from "./pages/MyPage";
 import AuthPage, { action as authAction } from "./pages/AuthPage";
 import ErrorPage from "./pages/ErrorPage";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           { path: ":productId", element: <ProductDetailPage></ProductDetailPage>, loader: productLoader },
         ],
       },
-      { path: "cart", element: <CartPage></CartPage>, loader: cartLoader },
+      { path: "cart", element: <CartPage></CartPage>, loader: checkAuthLoader },
       { path: "contact", element: <ContactPage></ContactPage> },
       { path: "auth", element: <AuthPage></AuthPage>, action: authAction },
       { path: "mypage/:userId", element: <MyPage></MyPage>, loader: checkAuthLoader },
