@@ -7,7 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import styles from "./Search.module.css";
 
-const Search = () => {
+const Search = (props) => {
   const dispatchFn = useDispatch();
   const i = useSelector((state) => state.search.inputValue);
 

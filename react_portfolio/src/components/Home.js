@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import styles from "./Home.module.css";
 import ProductCard from "./Products/ProductCard";
@@ -6,6 +7,8 @@ import RecommendProduct from "./Products/RecommendProduct";
 import Search from "./UI/Search";
 
 const Home = (props) => {
+  let tempProducts = props.products;
+
   return (
     <Fragment>
       <div className={styles.container}>
@@ -16,7 +19,7 @@ const Home = (props) => {
             {/*필터*/}
           </div>
           <div className={styles["products-list"]}>
-            {props.products.map((product) => {
+            {tempProducts.map((product) => {
               return <ProductCard key={product.id} product={product}></ProductCard>;
             })}
           </div>

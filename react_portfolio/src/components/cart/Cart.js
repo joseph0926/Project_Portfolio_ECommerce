@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -11,7 +11,11 @@ import styles from "./Cart.module.css";
 
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart.items);
-  console.log(cart);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   const dispatchFn = useDispatch();
 
   const clearCartHandler = () => {

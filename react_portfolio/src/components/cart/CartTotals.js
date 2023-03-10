@@ -7,24 +7,23 @@ import { formatPrice } from "../../helper/price";
 import styles from "./CartTotals.module.css";
 
 const CartTotals = (props) => {
-  const cart = props.cart;
+  const [cart] = props.cart;
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  console.log(totalQuantity);
-  console.log(cart);
+  const subtotal = props.cart.length >= 1 ? cart.price * totalQuantity : null;
 
   return (
     <div className={styles.container}>
       <div>
         <article>
           <h5>
-            subtotal :<span>{formatPrice(cart.price * totalQuantity)}</span>
+            subtotal :<span>{formatPrice(subtotal)}</span>
           </h5>
           <p>
             shipping fee :<span>{formatPrice(200)}</span>
           </p>
           <hr />
           <h4>
-            order total :<span>{formatPrice(cart.totalPrice + 200)}</span>
+            order total :<span>{formatPrice(subtotal + 200)}</span>
           </h4>
         </article>
         <Link to="/checkout" className="btn">
