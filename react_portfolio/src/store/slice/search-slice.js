@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
   name: "search",
-  initialState: { inputValue: "" },
+  initialState: { search: "", searchStatus: "all", searchType: "all" },
   reducers: {
-    inputChange(state, action) {
-      state.inputValue = action.payload;
+    clearFilters: (state) => {
+      state.search = "";
     },
-    clearInput(state) {
-      state.inputValue = "";
+    handleChange: (state, { payload: { name, value } }) => {
+      state[name] = value;
     },
   },
 });

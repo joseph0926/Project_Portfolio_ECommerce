@@ -11,9 +11,11 @@ const ProductPause = (props) => {
           <FaSearch size={props.size}></FaSearch>
         </Link>
       )}
-      <Link to="cart">
-        <FaCartPlus size={props.size}></FaCartPlus>
-      </Link>
+      {!props.isShow && (
+        <Link to="cart">
+          <FaCartPlus size={props.size}></FaCartPlus>
+        </Link>
+      )}
     </div>
   );
 };

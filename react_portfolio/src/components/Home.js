@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { searchAction } from "../store/slice/search-slice";
 
 import styles from "./Home.module.css";
 import ProductCard from "./Products/ProductCard";
@@ -7,7 +8,33 @@ import RecommendProduct from "./Products/RecommendProduct";
 import Search from "./UI/Search";
 
 const Home = (props) => {
-  let tempProducts = props.products;
+  const [products, setProducts] = useState(props.products);
+  const { search } = useSelector((state) => state.search);
+
+  console.log(products);
+  console.log(search);
+
+  const asdf = () => {
+    if (search === "") {
+      return props.products;
+    } else {
+      return products.filter((p) => {
+        return p.name.includes(search);
+      });
+    }
+  };
+
+  useEffect(() => {
+    setProducts(asdf);
+  }, [search]);
+
+  if (products.length === 0) {
+    return (
+      <div>
+        <h2>No jobs to display...</h2>
+      </div>
+    );
+  }
 
   return (
     <Fragment>
@@ -19,7 +46,7 @@ const Home = (props) => {
             {/*필터*/}
           </div>
           <div className={styles["products-list"]}>
-            {tempProducts.map((product) => {
+            {products.map((product) => {
               return <ProductCard key={product.id} product={product}></ProductCard>;
             })}
           </div>

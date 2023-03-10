@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { searchAction } from "../../store/slice/search-slice";
@@ -8,30 +8,53 @@ import { AiOutlineClose } from "react-icons/ai";
 import styles from "./Search.module.css";
 
 const Search = (props) => {
-  const dispatchFn = useDispatch();
-  const i = useSelector((state) => state.search.inputValue);
-
+  const [localSearch, setLocalSearch] = useState("");
   const [activeClasses, setActiveClasses] = useState("");
+  const dispatchFn = useDispatch();
+
+  const debounce = () => {
+    let timeoutID;
+    return (event) => {
+      setLocalSearch(event.target.value);
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+        dispatchFn(searchAction.handleChange({ name: event.target.name, value: event.target.value }));
+      }, 100);
+    };
+  };
+  const optimizedDebounce = useMemo(() => debounce(), []);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    setLocalSearch("");
+    dispatchFn(searchAction.clearFilters());
+  };
+
   const activeHandler = () => {
     setActiveClasses("active");
   };
   const hideSearchHandler = () => {
+    setLocalSearch("");
+    dispatchFn(searchAction.clearFilters());
     setActiveClasses("");
-    dispatchFn(searchAction.clearInput());
-  };
-
-  const inputChangeHandler = (event) => {
-    dispatchFn(searchAction.inputChange(event.target.value));
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className={`${styles.searchBox} ${styles[activeClasses]}`}>
         <div className={styles.search} onClick={activeHandler}>
           <FiSearch></FiSearch>
         </div>
         <div className={styles.input}>
-          <input type="text" id="search" name="search" placeholder="상품을 검색해보세요!" onChange={inputChangeHandler}></input>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            placeholder="상품을 검색해보세요!"
+            value={localSearch}
+            onChange={optimizedDebounce}
+          ></input>
         </div>
         <div className={styles.close} onClick={hideSearchHandler}>
           <AiOutlineClose></AiOutlineClose>
