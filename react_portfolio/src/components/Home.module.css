@@ -42,6 +42,18 @@
   min-width: 350px;
 }
 
+.modal-container {
+  color: black;
+}
+.modal-container ul li {
+  font-size: 0.9rem;
+}
+.btn {
+  float: right;
+  margin-top: 1.5rem;
+  color: black;
+}
+
 @media (min-width: 640px) {
   .header {
     flex-direction: row;

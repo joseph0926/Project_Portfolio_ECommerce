@@ -11,8 +11,11 @@ const BackdropOverlay = (props) => {
   const modalCloseHandler = () => {
     dispatchFn(uiAction.modalClose());
   };
-  const modal = useSelector((state) => state.ui.isModalOpen);
-  return <div>{!modal && <div className={styles.backdrop} onClick={modalCloseHandler} />}</div>;
+  return (
+    <div>
+      <div className={styles.backdrop} onClick={modalCloseHandler} />
+    </div>
+  );
 };
 
 const ModalOverlay = (props) => {
