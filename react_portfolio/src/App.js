@@ -13,6 +13,7 @@ import ErrorPage from "./pages/ErrorPage";
 import { action as logoutAction } from "./pages/Logout";
 import { tokenLoader, checkAuthLoader } from "./helper/auth-helper";
 import ContactPage from "./pages/ContactPage";
+import DummyPage from "./pages/DummyPage";
 
 const router = createBrowserRouter([
   {
@@ -27,14 +28,14 @@ const router = createBrowserRouter([
         path: "products",
         element: <ProductRoot></ProductRoot>,
         children: [
-          { index: true, element: <ProductsPage></ProductsPage> },
+          { index: true, element: <DummyPage></DummyPage> },
           { path: ":productId", element: <ProductDetailPage></ProductDetailPage>, loader: productLoader },
         ],
       },
       { path: "cart", element: <CartPage></CartPage>, loader: checkAuthLoader },
-      { path: "contact", element: <ContactPage></ContactPage> },
+      { path: "contact", element: <DummyPage></DummyPage> },
       { path: "auth", element: <AuthPage></AuthPage>, action: authAction },
-      { path: "mypage/:userId", element: <MyPage></MyPage>, loader: checkAuthLoader },
+      { path: "mypage/:userId", element: <DummyPage></DummyPage>, loader: checkAuthLoader },
       { path: "logout", action: logoutAction },
     ],
   },

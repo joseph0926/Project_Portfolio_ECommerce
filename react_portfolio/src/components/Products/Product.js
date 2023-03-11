@@ -58,9 +58,9 @@ const Product = (props) => {
                 <button type="button" className="btn" onClick={addToCartHandler}>
                   카트에 담기
                 </button>
-                <button type="button" className="btn">
+                <Link to="asdasdasd" className="btn">
                   구매하기
-                </button>
+                </Link>
               </div>
             )}
           </section>

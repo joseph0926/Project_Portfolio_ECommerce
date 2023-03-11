@@ -27,7 +27,7 @@ const MainNavbar = () => {
             }}
           >
             <MdOutlineChair></MdOutlineChair>
-            Products
+            Add Products
           </NavLink>
         </li>
         <li>
