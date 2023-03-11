@@ -26,15 +26,7 @@ const Home = (props) => {
 
   useEffect(() => {
     setProducts(asdf);
-  }, [search]);
-
-  if (products.length === 0) {
-    return (
-      <div>
-        <h2>No jobs to display...</h2>
-      </div>
-    );
-  }
+  }, [asdf, search]);
 
   return (
     <Fragment>
@@ -45,11 +37,18 @@ const Home = (props) => {
             <Search></Search>
             {/*필터*/}
           </div>
-          <div className={styles["products-list"]}>
-            {products.map((product) => {
-              return <ProductCard key={product.id} product={product}></ProductCard>;
-            })}
-          </div>
+          {products.length > 0 && (
+            <div className={styles["products-list"]}>
+              {products.map((product) => {
+                return <ProductCard key={product.id} product={product}></ProductCard>;
+              })}
+            </div>
+          )}
+          {products.length === 0 && (
+            <div className={styles["dummy-list"]}>
+              <h1>상품이 존재하지 않습니다</h1>
+            </div>
+          )}
         </div>
         <div className={styles.sub}>
           <RecommendProduct products={props.products}></RecommendProduct>

@@ -30,11 +30,11 @@ const Cart = (props) => {
       })}
       <hr />
       <div className={styles["link-container"]}>
-        <Link to="/products" className="btn">
-          continue shopping
+        <Link to="/" className="btn">
+          상품 더 둘러보기
         </Link>
         <button type="button" className="btn" onClick={clearCartHandler}>
-          clear shopping cart
+          카트 초기화
         </button>
       </div>
       <CartTotals cart={cart} />

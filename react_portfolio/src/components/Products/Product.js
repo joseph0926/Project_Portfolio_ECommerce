@@ -52,15 +52,17 @@ const Product = (props) => {
               {company}
             </p>
             <hr />
-            <CartItemAmount></CartItemAmount>
+            {/* <CartItemAmount></CartItemAmount> */}
             {stock > 0 && (
               <div className={styles.btnCon}>
                 <button type="button" className="btn" onClick={addToCartHandler}>
                   카트에 담기
                 </button>
-                <Link to="asdasdasd" className="btn">
-                  구매하기
-                </Link>
+                <div className={styles.dumCon}>
+                  <Link to="asdasdasd" className={`btn ${styles.dum}`}>
+                    구매하기
+                  </Link>
+                </div>
               </div>
             )}
           </section>

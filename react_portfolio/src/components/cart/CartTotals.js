@@ -26,9 +26,11 @@ const CartTotals = (props) => {
             order total :<span>{formatPrice(subtotal + 200)}</span>
           </h4>
         </article>
-        <Link to="/checkout" className="btn">
-          proceed to checkout
-        </Link>
+        <div className={styles.dumCon}>
+          <Link to="/checkout" className={`btn ${styles.dum}`}>
+            구매하기
+          </Link>
+        </div>
       </div>
     </div>
   );
